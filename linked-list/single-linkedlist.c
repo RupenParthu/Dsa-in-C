@@ -46,7 +46,7 @@ snode* createlist(snode* head) {
             q = head;
             while (q->next != NULL) {
                 q = q->next;
-            }
+            } 
             q->next = p;
         }
         printf("Do you want to continue? (y/n): ");
