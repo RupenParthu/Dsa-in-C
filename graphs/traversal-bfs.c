@@ -2,10 +2,9 @@
 #include <stdbool.h>
 #define MAX 7
 
-int adj[MAX][MAX] = {0};        // Adjacency Matrix
-bool visited[MAX] = {false};      // Visited Array
+int adj[MAX][MAX] = {0};       
+bool visited[MAX] = {false};      
 
-// Queue Implementation
 int queue[MAX];
 int front = 0, rear = 0;
 
@@ -17,20 +16,18 @@ void enqueue(int x) {
 int dequeue() {
     if (front < rear)
         return queue[front++];
-    return -1; // Return -1 if queue is empty
+    return -1; 
 }
 
 bool isEmpty() {
     return (front == rear);
 }
 
-// Add undirected edge
 void addEdge(int u, int v) {
     adj[u][v] = 1;
     adj[v][u] = 1;
 }
 
-// BFS function
 void BFS(int start) {
     visited[start] = true;
     enqueue(start);
@@ -39,7 +36,6 @@ void BFS(int start) {
         int vertex = dequeue();
         printf("%d ", vertex);
 
-        // Check and enqueue neighbors
         for (int i = 0; i < MAX; i++) {
             if (adj[vertex][i] == 1 && !visited[i]) {
                 visited[i] = true;
@@ -49,9 +45,7 @@ void BFS(int start) {
     }
 }
 
-// Main function
 int main() {
-    // Build a simple undirected graph
     addEdge(0, 1);
     addEdge(0, 2);
     addEdge(1, 3);
